@@ -1,14 +1,15 @@
 plugins {
     kotlin("multiplatform")
-    id("com.android.library")
-    id("org.jetbrains.compose")
-    id("com.vanniktech.maven.publish")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.compose)
 }
 
-kotlinMultiplatform()
-
 kotlin {
+    jvmToolchain(17)
+
     sourceSets {
+        androidTarget()
+
         val commonMain by getting {
             dependencies {
                 compileOnly(compose.runtime)
@@ -16,6 +17,18 @@ kotlin {
                 compileOnly(compose.ui)
                 compileOnly(compose.materialIconsExtended)
             }
+        }
+    }
+}
+
+android {
+    compileSdk = 34
+    namespace = "cafe.adriel.bonsai.core"
+
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 }

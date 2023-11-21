@@ -1,29 +1,7 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-        maven { url "https://maven.pkg.jetbrains.space/public/p/compose/dev" }
-    }
-    dependencies {
-        classpath libs.bundles.plugins
-    }
-}
-
-subprojects {
-    apply plugin: 'org.jlleitschuh.gradle.ktlint'
-    apply plugin: 'io.gitlab.arturbosch.detekt'
-    plugins.withId("com.vanniktech.maven.publish") {
-        mavenPublish {
-            sonatypeHost = "S01"
-        }
-    }
-    detekt {
-        config = files("../detekt.yml")
-        parallel = true
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
+plugins {
+    alias(libs.plugins.android.application).apply(false)
+    alias(libs.plugins.android.library).apply(false)
+    alias(libs.plugins.kotlin.android).apply(false)
+    alias(libs.plugins.kotlin.multiplatform).apply(false)
+    alias(libs.plugins.jetbrains.compose).apply(false)
 }

@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
-import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.bonsai.sample.tree.BonsaiContent
+import cafe.adriel.bonsai.sample.tree.composeTree
 
 class SampleActivity : ComponentActivity() {
 
@@ -12,7 +13,9 @@ class SampleActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MaterialTheme {
-                Navigator(HomeScreen)
+                BonsaiContent(
+                    tree = composeTree(),
+                )
             }
         }
     }

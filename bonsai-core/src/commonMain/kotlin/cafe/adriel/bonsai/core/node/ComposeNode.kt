@@ -23,6 +23,7 @@ public fun <T> TreeScope.Leaf(
                 content = content,
                 name = name,
                 depth = depth,
+                key = name + depth,
                 iconComponent = customIcon ?: { DefaultNodeIcon(it) },
                 nameComponent = customName ?: { DefaultNodeName(it) },
             )
@@ -52,6 +53,7 @@ public fun <T> TreeScope.Branch(
                 content = content,
                 name = name,
                 depth = depth,
+                key = name + depth,
                 iconComponent = customIcon ?: { DefaultNodeIcon(it) },
                 nameComponent = customName ?: { DefaultNodeName(it) },
             )

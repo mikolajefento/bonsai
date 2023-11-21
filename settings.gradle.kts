@@ -1,5 +1,12 @@
+pluginManagement {
+    repositories {
+        google()
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
@@ -10,9 +17,6 @@ dependencyResolutionManagement {
 include(
     ":sample",
     ":bonsai-core",
-    ":bonsai-file-system",
-    ":bonsai-json",
 )
 
-enableFeaturePreview("VERSION_CATALOGS")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
